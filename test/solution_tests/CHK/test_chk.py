@@ -22,3 +22,7 @@ class TestChk():
 
     def test_chk(self):
         assert checkout_solution.checkout("AABCDAB") == 130 + 45 + 20 + 15
+
+    def test_chk_mixed(self):
+        assert checkout_solution.checkout("AABCDABAB") == 130 + 45 + 20 + 15 + 50 + 30
+
