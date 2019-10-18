@@ -1,12 +1,21 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
-deals_order = ['E', 'A', 'B', 'F']
+deals_order = ['E','N', 'R','U','A', 'B', 'F','H','K','P','Q','V']
+
 current_deals = {'A': [{'quantity': 5, 'deal': 200}, {'quantity': 3, 'deal': 130}],
                  'B': [{'quantity': 2, 'deal': 45}],
                  'E': [{'quantity': 2, 'deal': 'B'}],
-                 'F': [{'quantity': 3, 'deal': 20}]}
+                 'F': [{'quantity': 3, 'deal': 20}],
+                 'H': [{'quantity': 10, 'deal': 80},{'quantity': 5, 'deal': 45}],
+                 'K': [{'quantity': 2, 'deal': 150}],
+                 'N': [{'quantity': 3, 'deal': 'M'}],
+                 'P': [{'quantity': 5, 'deal': 200}],
+                 'Q': [{'quantity': 3, 'deal': 80}],
+                 'R': [{'quantity': 3, 'deal': 'Q'}],
+                 'U': [{'quantity': 3, 'deal': 80}],
+                 'V': [{'quantity': 3, 'deal': 130},{'quantity': 2, 'deal': 90}]}
 
-prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10}
+prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G':20,'H':,'I':35,'J':60,'K':,'L':90,'M':15,'N':,'O':10,'P':,'Q':,'R':,'S':30,'T':20,'U':,'V':,'W':20,'X':90,'Y':10,'Z':50}
 
 
 def checkout(skus):
