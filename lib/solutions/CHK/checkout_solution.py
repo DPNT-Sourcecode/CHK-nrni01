@@ -79,12 +79,20 @@ def checkout(skus):
 
         # create a stack where to store all the items with the cheapest first
         group_items_in_list = []
+
+        # check each item from current group deal
         for item in deal['items']:
+
             if item in shopping_list:
+
+                # if item in shopping list => add that many to the stack and update shopping list
                 group_items_in_list.extend([prices[item]] * shopping_list[item])
                 del shopping_list[item]
+        # apply the deal for as many items as possible
         total += len(group_items_in_list) // deal['quantity'] * deal['deal']
-        for no_deal_index in range(0, len(group_items_in_list) % deal['quantity'] + 1):
+
+        # add the items with no deal to the total
+        for no_deal_index in range(0, len(group_items_in_list) % deal['quantity']):
             total += group_items_in_list[no_deal_index]
 
     # calculate the total for items with no deal
@@ -92,5 +100,6 @@ def checkout(skus):
         total += shopping_list[item] * prices[item]
 
     return total
+
 
 
