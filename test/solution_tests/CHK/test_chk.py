@@ -39,7 +39,7 @@ class TestChk():
         assert checkout_solution.checkout("HHHHHHHHHH") == 80
 
     def test_chk_k_deal(self):
-        assert checkout_solution.checkout("KK") == 150
+        assert checkout_solution.checkout("KK") == 120
 
     def test_chk_n_deal_no_m(self):
         assert checkout_solution.checkout("NNN") == 120
@@ -73,3 +73,4 @@ class TestChk():
 
     def test_chk_mixed(self):
         assert checkout_solution.checkout("AABCDABABEEFFF") == 130 + 45 + 20 + 15 + 50 + 80 + 20
+
