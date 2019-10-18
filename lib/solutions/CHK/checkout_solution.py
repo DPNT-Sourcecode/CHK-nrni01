@@ -6,7 +6,7 @@ prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
 
 
 def checkout(skus):
-    skus = skus.upper()
+    # skus = skus.upper()
     shopping_list = {}
     for item in skus:
         if item not in prices:
@@ -24,5 +24,6 @@ def checkout(skus):
             total += shopping_list[item] * prices[item]
 
     return total
+
 
 
