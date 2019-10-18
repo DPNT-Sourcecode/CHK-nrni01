@@ -103,9 +103,3 @@ def checkout(skus):
         total += shopping_list[item] * prices[item]
 
     return total
-
-
-
-
-
-

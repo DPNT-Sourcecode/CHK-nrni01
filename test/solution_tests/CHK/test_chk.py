@@ -82,6 +82,3 @@ class TestChk():
 
     def test_chk_stxyz_deal_3(self):
         assert checkout_solution.checkout("SZZXT") == 45 + 17 + 20
-
-
-
