@@ -1,2 +1,4 @@
-def sum_solution(x, y):
-    return x + y
+class sum_solution:
+    def compute(self, x, y):
+        return x + y
+
