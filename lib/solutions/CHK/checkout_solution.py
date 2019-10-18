@@ -1,9 +1,9 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 deals_order = ['E', 'A', 'B']
-deals = {'A': {'quantity': 3, 'deal': 130},
-         'B': {'quantity': 2, 'deal': 45},
-         'E': {'quantity': 2, 'deal': 'B'}}
+deals = {'A': [{'quantity': 5, 'deal': 200}, {'quantity': 3, 'deal': 130}],
+         'B': [{'quantity': 2, 'deal': 45}],
+         'E': [{'quantity': 2, 'deal': 'B'}]}
 
 prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
 
@@ -47,6 +47,7 @@ def checkout(skus):
         total += shopping_list[item] * prices[item]
 
     return total
+
 
 
 
