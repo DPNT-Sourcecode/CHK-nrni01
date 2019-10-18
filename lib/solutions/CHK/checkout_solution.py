@@ -9,6 +9,8 @@ def checkout(skus):
     skus = skus.upper()
     shopping_list = {}
     for item in skus:
+        if item not in prices:
+            return -1
         if item not in shopping_list:
             shopping_list[item] = 1
         else:
@@ -22,4 +24,5 @@ def checkout(skus):
             total += shopping_list[item] * prices[item]
 
     return total
+
 
