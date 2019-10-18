@@ -50,7 +50,7 @@ class TestChk():
     def test_chk_p_deal(self):
         assert checkout_solution.checkout("PPPPP") == 200
 
-    def test_chk_Q_deal(self):
+    def test_chk_q_deal(self):
         assert checkout_solution.checkout("QQQ") == 80
 
     def test_chk_r_deal_no_q(self):
@@ -69,18 +69,19 @@ class TestChk():
         assert checkout_solution.checkout("VVV") == 130
 
     def test_chk(self):
-        assert checkout_solution.checkout("AABCDABEEBFF") == 130 + 45 + 20 + 15 + 80 + 20
+        assert checkout_solution.checkout("AABCDABEEBFFVVVUUUURRRQ") == 130 + 45 + 20 + 15 + 80 + 20 + 130 + 120 + 150
 
     def test_chk_mixed(self):
-        assert checkout_solution.checkout("AABCDABABEEFFF") == 130 + 45 + 20 + 15 + 50 + 80 + 20
+        assert checkout_solution.checkout("AABCDABABEEFFFXXXX") == 130 + 45 + 20 + 15 + 50 + 80 + 20 + 45 + 17
 
     def test_chk_stxyz_deal(self):
-        assert checkout_solution.checkout("XXSS") == 45+17
+        assert checkout_solution.checkout("XXSS") == 45 + 17
 
     def test_chk_stxyz_deal_2(self):
-        assert checkout_solution.checkout("XXSSZT") == 45*2
+        assert checkout_solution.checkout("XXSSZT") == 45 * 2
 
     def test_chk_stxyz_deal_3(self):
-        assert checkout_solution.checkout("SZZXT") == 45+17+20
+        assert checkout_solution.checkout("SZZXT") == 45 + 17 + 20
+
 
 

@@ -88,6 +88,7 @@ def checkout(skus):
                 # if item in shopping list => add that many to the stack and update shopping list
                 group_items_in_list.extend([prices[item]] * shopping_list[item])
                 del shopping_list[item]
+
         # apply the deal for as many items as possible
         total += len(group_items_in_list) // deal['quantity'] * deal['deal']
 
@@ -100,6 +101,7 @@ def checkout(skus):
         total += shopping_list[item] * prices[item]
 
     return total
+
 
 
 
