@@ -1,7 +1,8 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-# same items with group price deals or +another item deal
+# same items with 'group price deals' or '+another item deal'
+# the items with '+another item deal' are first to be applied
 deals_order = ['E', 'N', 'R', 'U', 'A', 'B', 'F', 'H', 'K', 'P', 'Q', 'V']
 
 # group price deals and +another item deals
@@ -28,6 +29,7 @@ prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10
 
 
 def checkout(skus):
+
     # a dictionary containing as key item name and as value number of items in the skus
     shopping_list = {}
 
@@ -46,7 +48,7 @@ def checkout(skus):
     # total for checkout
     total = 0
 
-    # check if the items with deals are on the shopping list
+    # check if the same items with deals are on the shopping list
     for item in deals_order:
 
         if item in shopping_list:
@@ -101,6 +103,7 @@ def checkout(skus):
         total += shopping_list[item] * prices[item]
 
     return total
+
 
 
 
