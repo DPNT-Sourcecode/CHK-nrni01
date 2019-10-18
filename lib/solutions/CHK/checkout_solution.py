@@ -1,6 +1,9 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+# used for identifing
 deals_order = ['E', 'N', 'R', 'U', 'A', 'B', 'F', 'H', 'K', 'P', 'Q', 'V']
+
 current_deals = {'A': [{'quantity': 5, 'deal': 200}, {'quantity': 3, 'deal': 130}],
                  'B': [{'quantity': 2, 'deal': 45}],
                  'E': [{'quantity': 2, 'deal': 'B'}],
@@ -13,6 +16,8 @@ current_deals = {'A': [{'quantity': 5, 'deal': 200}, {'quantity': 3, 'deal': 130
                  'R': [{'quantity': 3, 'deal': 'Q'}],
                  'U': [{'quantity': 4, 'deal': 120}],
                  'V': [{'quantity': 3, 'deal': 130}, {'quantity': 2, 'deal': 90}]}
+
+group_deals = [{'items': 'ZYSTX', 'quantity': 3, 'deal': 45}]
 
 prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60, 'K': 70, 'L': 90,
           'M': 15, 'N': 40, 'O': 10, 'P': 50, 'Q': 30, 'R': 50, 'S': 20, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 17,
@@ -50,7 +55,7 @@ def checkout(skus):
                 # if the deal is a price deal => add that to total and update the shoping list
                 if isinstance(deals['deal'], int):
 
-                    total += shopping_list[item] // deals['quantity'] * deals["deal"]
+                    total += shopping_list[item] // deals['quantity'] * deals['deal']
                     shopping_list[item] = shopping_list[item] % deals['quantity']
 
                 # else is an item deal => delete item with deal on it from the list
@@ -69,4 +74,5 @@ def checkout(skus):
         total += shopping_list[item] * prices[item]
 
     return total
+
 
