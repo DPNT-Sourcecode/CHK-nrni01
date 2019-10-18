@@ -1,9 +1,10 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-# used for identifing
+# same items with group price deals or +another item deal
 deals_order = ['E', 'N', 'R', 'U', 'A', 'B', 'F', 'H', 'K', 'P', 'Q', 'V']
 
+# group price deals and +another item deals
 current_deals = {'A': [{'quantity': 5, 'deal': 200}, {'quantity': 3, 'deal': 130}],
                  'B': [{'quantity': 2, 'deal': 45}],
                  'E': [{'quantity': 2, 'deal': 'B'}],
@@ -17,6 +18,7 @@ current_deals = {'A': [{'quantity': 5, 'deal': 200}, {'quantity': 3, 'deal': 130
                  'U': [{'quantity': 4, 'deal': 120}],
                  'V': [{'quantity': 3, 'deal': 130}, {'quantity': 2, 'deal': 90}]}
 
+# different items with price deals
 group_deals = [{'items': 'ZYSTX', 'quantity': 3, 'deal': 45}]
 
 prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60, 'K': 70, 'L': 90,
@@ -69,10 +71,15 @@ def checkout(skus):
                         if shopping_list[deals['deal']] < 0:
                             shopping_list[deals['deal']] = 0
 
+    # calculate the total for different items group deals
+    for deal in group_deals:
+        group_items_in_list=[]
+        for item in deal['items']:
+            if item in shopping_list:
+                group_items_in_list
+
     # calculate the total for items with no deal
     for item in shopping_list:
         total += shopping_list[item] * prices[item]
 
     return total
-
-
