@@ -31,4 +31,3 @@ class TestChk():
 
     def test_chk_e_deal(self):
         assert checkout_solution.checkout("EEBB") == 80 + 30
-
