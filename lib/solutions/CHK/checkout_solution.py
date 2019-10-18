@@ -19,6 +19,7 @@ current_deals = {'A': [{'quantity': 5, 'deal': 200}, {'quantity': 3, 'deal': 130
                  'V': [{'quantity': 3, 'deal': 130}, {'quantity': 2, 'deal': 90}]}
 
 # different items with price deals
+# the items are sorted as the most expensive first
 group_deals = [{'items': 'ZYSTX', 'quantity': 3, 'deal': 45}]
 
 prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60, 'K': 70, 'L': 90,
@@ -30,7 +31,7 @@ def checkout(skus):
     # a dictionary containing as key item name and as value number of items in the skus
     shopping_list = {}
 
-    # turn the skus styring into shopping_list dictionary
+    # turn the skus string into shopping_list dictionary
     for item in skus:
 
         if item not in prices:
@@ -48,40 +49,48 @@ def checkout(skus):
     # check if the items with deals are on the shopping list
     for item in deals_order:
 
-        # get each deal for an item
-        for deals in current_deals[item]:
+        if item in shopping_list:
 
-            # check if quantity required for the deal is in the shopping list
-            if item in shopping_list and deals['quantity'] <= shopping_list[item]:
+            # get each deal for an item
+            for deals in current_deals[item]:
 
-                # if the deal is a price deal => add that to total and update the shoping list
-                if isinstance(deals['deal'], int):
+                # check if quantity required for the deal is in the shopping list
+                if deals['quantity'] <= shopping_list[item]:
 
-                    total += shopping_list[item] // deals['quantity'] * deals['deal']
-                    shopping_list[item] = shopping_list[item] % deals['quantity']
+                    # if the deal is a price deal => add that to total and update the shopping list
+                    if isinstance(deals['deal'], int):
 
-                # else is an item deal => delete item with deal on it from the list
-                else:
+                        total += shopping_list[item] // deals['quantity'] * deals['deal']
+                        shopping_list[item] = shopping_list[item] % deals['quantity']
 
-                    if deals['deal'] in shopping_list:
+                    # else is an item deal => delete item with deal on it from the list
+                    else:
 
-                        shopping_list[deals['deal']] -= shopping_list[item] // deals['quantity']
+                        if deals['deal'] in shopping_list:
 
-                        # make sure you don't delete more items than items in the shopping list
-                        if shopping_list[deals['deal']] < 0:
-                            del shopping_list[deals['deal']]
+                            shopping_list[deals['deal']] -= shopping_list[item] // deals['quantity']
+
+                            # make sure you don't delete more items than items in the shopping list
+                            if shopping_list[deals['deal']] <= 0:
+                                del shopping_list[deals['deal']]
 
     # calculate the total for different items group deals
     for deal in group_deals:
-        group_items_in_list=[]
+
+        # create a stack where to store all the items with the cheapest first
+        group_items_in_list = []
         for item in deal['items']:
             if item in shopping_list:
-                group_items_in_list.extend([prices[item]]*shopping_list[item])
+                group_items_in_list.extend([prices[item]] * shopping_list[item])
                 del shopping_list[item]
+        total += len(group_items_in_list) // deal['quantity'] * deal['deal']
+        for no_deal_index in range(0, len(group_items_in_list) % deal['quantity'] + 1):
+            total += group_items_in_list[no_deal_index]
 
     # calculate the total for items with no deal
     for item in shopping_list:
         total += shopping_list[item] * prices[item]
 
     return total
+
 
