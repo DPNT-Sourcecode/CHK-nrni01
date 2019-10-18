@@ -32,25 +32,32 @@ def checkout(skus):
 
         # get each deal for an item
         for deals in current_deals[item]:
+
+            # check if quantity required for the deal is in the shopping list
             if item in shopping_list and deals['quantity'] <= shopping_list[item]:
 
+                # if the deal is a price deal => add that to total and update the shoping list
                 if isinstance(deals['deal'], int):
 
                     total += shopping_list[item] // deals['quantity'] * deals["deal"]
                     shopping_list[item] = shopping_list[item] % deals['quantity']
 
+                # else is an item deal => delete item with deal on it from the list
                 else:
 
                     if deals['deal'] in shopping_list:
 
                         shopping_list[deals['deal']] -= shopping_list[item] // deals['quantity']
 
+                        # make sure you don't delete more items than items in the shopping list
                         if shopping_list[deals['deal']] < 0:
                             shopping_list[deals['deal']] = 0
 
+    # calculate the total for items with no deal
     for item in shopping_list:
 
         total += shopping_list[item] * prices[item]
 
     return total
+
 

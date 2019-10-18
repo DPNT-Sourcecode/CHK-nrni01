@@ -17,6 +17,9 @@ class TestChk():
     def test_chk_a_deal(self):
         assert checkout_solution.checkout("AAA") == 130
 
+    def test_chk_a_2nd_deal(self):
+        assert checkout_solution.checkout("AAAAA") == 200
+
     def test_chk_b_deal(self):
         assert checkout_solution.checkout("BB") == 45
 
@@ -31,3 +34,4 @@ class TestChk():
 
     def test_chk_e_deal(self):
         assert checkout_solution.checkout("EEBB") == 80 + 30
+
