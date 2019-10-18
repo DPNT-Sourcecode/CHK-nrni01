@@ -1,11 +1,12 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
-deals_order = ['E', 'A', 'B']
+deals_order = ['E', 'A', 'B', 'F']
 current_deals = {'A': [{'quantity': 5, 'deal': 200}, {'quantity': 3, 'deal': 130}],
-         'B': [{'quantity': 2, 'deal': 45}],
-         'E': [{'quantity': 2, 'deal': 'B'}]}
+                 'B': [{'quantity': 2, 'deal': 45}],
+                 'E': [{'quantity': 2, 'deal': 'B'}],
+                 'F': [{'quantity': 3, 'deal': 20}]}
 
-prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
+prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10}
 
 
 def checkout(skus):
@@ -55,9 +56,9 @@ def checkout(skus):
 
     # calculate the total for items with no deal
     for item in shopping_list:
-
         total += shopping_list[item] * prices[item]
 
     return total
+
 
 
