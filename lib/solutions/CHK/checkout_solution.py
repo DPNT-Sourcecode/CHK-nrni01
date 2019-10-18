@@ -15,8 +15,13 @@ def checkout(skus):
     total = 0
     for item in shopping_list:
         if item in deals:
-            total += shopping_list[item] // deals[item]["quantity"] * deals[item]["deal_price"] + shopping_list[item] % deals[item]["quantity"]
+            total += shopping_list[item] // deals[item]["quantity"] * deals[item]["deal_price"] + shopping_list[item] % \
+                     deals[item]["quantity"] * prices[item]
+        else:
+            total += shopping_list[item]*prices[item]
+
     return total
+
 
 
 
