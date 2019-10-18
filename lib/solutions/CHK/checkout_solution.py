@@ -31,7 +31,7 @@ def checkout(skus):
             if isinstance(deals[item]['deal'], int):
 
                 total += shopping_list[item] // deals[item]['quantity'] * deals[item]["deal"]
-                shopping_list[item] -= shopping_list[item] // deals[item]['quantity']
+                shopping_list[item] = shopping_list[item] % deals[item]['quantity']
 
             else:
 
@@ -47,6 +47,7 @@ def checkout(skus):
         total += shopping_list[item] * prices[item]
 
     return total
+
 
 
 
