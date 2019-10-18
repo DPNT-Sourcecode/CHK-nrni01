@@ -69,17 +69,19 @@ def checkout(skus):
 
                         # make sure you don't delete more items than items in the shopping list
                         if shopping_list[deals['deal']] < 0:
-                            shopping_list[deals['deal']] = 0
+                            del shopping_list[deals['deal']]
 
     # calculate the total for different items group deals
     for deal in group_deals:
         group_items_in_list=[]
         for item in deal['items']:
             if item in shopping_list:
-                group_items_in_list
+                group_items_in_list.extend([prices[item]]*shopping_list[item])
+                del shopping_list[item]
 
     # calculate the total for items with no deal
     for item in shopping_list:
         total += shopping_list[item] * prices[item]
 
     return total
+
