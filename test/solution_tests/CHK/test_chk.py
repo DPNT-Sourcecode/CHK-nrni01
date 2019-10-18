@@ -77,3 +77,10 @@ class TestChk():
     def test_chk_stxyz_deal(self):
         assert checkout_solution.checkout("XXSS") == 45+17
 
+    def test_chk_stxyz_deal_2(self):
+        assert checkout_solution.checkout("XXSSZT") == 45*2
+
+    def test_chk_stxyz_deal_3(self):
+        assert checkout_solution.checkout("SZZXT") == 45+17+20
+
+
