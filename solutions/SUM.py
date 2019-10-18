@@ -1,4 +1,6 @@
 class sum_solution:
-    def compute(self, x, y):
+    @staticmethod
+    def compute(x, y):
         return x + y
+
 
